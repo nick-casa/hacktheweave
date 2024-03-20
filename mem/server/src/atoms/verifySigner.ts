@@ -33,12 +33,7 @@ export async function verifyCosmosSignature(
 			messageBytes,
 			pubKeyUint8Array
 		);
-
-		// Verify the address corresponds to the public key
-		const derivedAddress = pubkeyToAddress(pubKeyUint8Array, "cosmos");
-
-		// Check if derived address matches the provided address and signature is valid
-		return valid && derivedAddress === address;
+		return valid;
 	} catch (error) {
 		console.error("Error verifying signature:", error);
 		return false;
