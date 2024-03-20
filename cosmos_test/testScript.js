@@ -32,6 +32,7 @@ const simulateCosmosWallet = async () => {
 		prefix: "cosmos", // Adjust this prefix if necessary
 	});
 	let accounts = await wallet.getAccounts();
+	console.log(accounts);
 	const pubkeyHex = Buffer.from(accounts[0].pubkey).toString("base64");
 
 	console.log(pubkeyHex);
@@ -40,6 +41,9 @@ const simulateCosmosWallet = async () => {
 	const signature = await signMessage(wallet, message);
 
 	console.log(`Message: ${message}`);
+	var decoder = new TextDecoder("utf8");
+	var b64encoded = btoa(decoder.decode(new TextEncoder().encode(message)));
+	console.log(b64encoded);
 	console.log(signature);
 };
 

@@ -1,16 +1,13 @@
-const {
-	Secp256k1,
-	Secp256k1Signature,
-	pubkeyToAddress,
-} = require("@cosmjs/amino");
-
-const { fromBase64, toAscii } = require("@cosmjs/encoding");
+import { Secp256k1, Secp256k1Signature } from "@cosmjs/crypto";
+import { pubkeyToAddress } from "@cosmjs/amino";
+import { fromBase64, toAscii } from "@cosmjs/encoding";
 
 /**
  * Verifies that the signed message came from the Cosmos wallet address.
  *
  * @param {string} address - The Cosmos wallet address.
  * @param {string} signedMessage - The signed message, expected to be in base64 format.
+ * @param {string} pubKey - The public key in base64 format.
  * @param {string} message - The original message that was signed.
  * @return {Promise<boolean>} - True if the signature is valid, false otherwise.
  */
