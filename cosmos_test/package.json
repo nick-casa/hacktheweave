@@ -1,0 +1,19 @@
+{
+	"name": "cosmos_test",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "node testScript.js"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"@cosmjs/amino": "^0.32.3",
+		"@cosmjs/crypto": "^0.32.3",
+		"@cosmjs/launchpad": "^0.27.1",
+		"buffer": "^6.0.3",
+		"dotenv": "^16.4.5"
+	}
+}

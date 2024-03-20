@@ -4,7 +4,7 @@ import {
 	cosmosTokenBalance,
 	getTransaction,
 } from "./atoms/balances";
-import { verifySigner } from "./atoms/verifySigner";
+import { verifyCosmosSignature } from "./atoms/verifySigner";
 
 const app: Express = express();
 const port = process.env.PORT || 3000;
@@ -47,7 +47,7 @@ app.get(
 		console.log("caller:", caller);
 		console.log("message:", message);
 		console.log("signature:", signature);
-		const result = await verifySigner(caller, message, signature);
+		const result = await verifyCosmosSignature(caller, signature, message);
 		res.send(result);
 		return;
 	}
