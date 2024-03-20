@@ -1,0 +1,7 @@
+{
+	"results": [],
+	"cosmos_molecule_endpoint": "http://cosmos.molecule.sh",
+	"publicFunctions": {
+		"sign": ["caller", "signature"]
+	}
+}
