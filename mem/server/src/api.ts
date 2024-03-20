@@ -44,6 +44,9 @@ app.get(
 	"/signer/:caller/:message/:signature",
 	async (req: Request, res: Response) => {
 		const { caller, message, signature } = req.params;
+		console.log("caller:", caller);
+		console.log("message:", message);
+		console.log("signature:", signature);
 		const result = await verifySigner(caller, message, signature);
 		res.send(result);
 		return;
