@@ -41,13 +41,18 @@ app.get("/tx/:txid", async (req: Request, res: Response) => {
 });
 
 app.get(
-	"/signer/:caller/:message/:signature",
+	"/signer/:caller/:pubkey/:message/:signature",
 	async (req: Request, res: Response) => {
-		const { caller, message, signature } = req.params;
+		const { caller, pubkey, message, signature } = req.params;
 		console.log("caller:", caller);
 		console.log("message:", message);
 		console.log("signature:", signature);
-		const result = await verifyCosmosSignature(caller, signature, message);
+		const result = await verifyCosmosSignature(
+			caller,
+			signature,
+			pubkey,
+			message
+		);
 		res.send(result);
 		return;
 	}

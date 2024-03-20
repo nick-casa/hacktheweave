@@ -17,6 +17,7 @@ const { fromBase64, toAscii } = require("@cosmjs/encoding");
 export async function verifyCosmosSignature(
 	address: string,
 	signedMessage: string,
+	pubKey: string,
 	message: string
 ): Promise<boolean> {
 	try {
@@ -26,15 +27,8 @@ export async function verifyCosmosSignature(
 		);
 		const messageBytes = toAscii(message);
 
-		// You typically need the public key to verify the signature.
-		// In most cases, you can't derive the public key just from the address as it's a hash.
-		// Here, you should pass the public key along with the message and signature.
-		// For the sake of example, I'll just demonstrate the process assuming public key is known.
-		// Replace this with the actual public key.
-		const publicKey = "your-public-key-in-base64";
-
 		// Convert the public key from base64 to a Uint8Array.
-		const pubKeyUint8Array = fromBase64(publicKey);
+		const pubKeyUint8Array = fromBase64(pubKey);
 
 		// Verify the signature
 		const valid = await Secp256k1.verifySignature(
@@ -53,12 +47,3 @@ export async function verifyCosmosSignature(
 		return false;
 	}
 }
-
-// Use the function like this:
-verifyCosmosSignature(
-	"cosmos1...", // The Cosmos address
-	"...", // The signature in base64
-	"The original message" // The original message that was signed
-).then((isValid) => {
-	console.log("Is the signature valid?", isValid);
-});
